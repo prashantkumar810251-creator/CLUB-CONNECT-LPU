@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ClubConnect | LPU</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">C</div>
+            <div>
+                <h2>ClubConnect</h2>
+                <small>LPU Student Clubs</small>
+            </div>
+        </div>
+
+        <div class="menu-title">MENU</div>
+
+        <nav class="navigation">
+
+            <button class="nav-btn active" data-page="dashboard">
+                <span>⌂</span> Dashboard
+            </button>
+
+            <button class="nav-btn" data-page="members">
+                <span>♙</span> Members
+            </button>
+
+            <button class="nav-btn" data-page="tasks">
+                <span>✓</span> Tasks
+            </button>
+
+            <button class="nav-btn" data-page="onboarding">
+                <span>＋</span> New Members
+            </button>
+
+            <button class="nav-btn" data-page="feedback">
+                <span>♡</span> Feedback
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-card">
+                <h3>ClubConnect</h3>
+                <p>Every member matters. Every contribution counts.</p>
+            </div>
+
+            <p class="sidebar-footer">
+                Design Thinking Project<br>
+                P18 · LPU
+            </p>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <p class="top-label">LPU STUDENT CLUB WORKSPACE</p>
+                <h1 id="pageTitle">Dashboard</h1>
+            </div>
+
+            <div class="top-right">
+                <span class="status-dot"></span>
+                <span>Prototype</span>
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section class="page active" id="dashboard">
+
+            <!-- CAMPUS HERO -->
+            <div class="campus-hero">
+
+                <img
+                    src="lpu-campus.jpg"
+                    alt="LPU Student Welfare Wing, Building 13"
+                    class="campus-image"
+                >
+
+                <div class="campus-overlay"></div>
+
+                <div class="campus-content">
+                    <span class="campus-tag">LOVELY PROFESSIONAL UNIVERSITY</span>
+
+                    <h2>Welcome to<br>ClubConnect</h2>
+
+                    <p>
+                        Helping students connect, contribute, collaborate
+                        and grow through meaningful club participation.
+                    </p>
+
+                    <button class="hero-button" onclick="goToPage('tasks')">
+                        Explore Tasks →
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- LPU INTRO -->
+            <div class="lpu-info">
+
+                <div class="lpu-info-text">
+                    <span class="section-tag">OUR CAMPUS</span>
+
+                    <h2>Life at LPU</h2>
+
+                    <p>
+                        Lovely Professional University is located in Phagwara,
+                        Punjab. The university provides students with
+                        opportunities to learn, explore interests,
+                        participate in activities, develop skills and
+                        collaborate through clubs and campus communities.
+                    </p>
+
+                    <p>
+                        ClubConnect is a student-focused prototype designed
+                        to make club participation more organized,
+                        transparent and welcoming.
+                    </p>
+                </div>
+
+                <div class="lpu-info-box">
+                    <div>
+                        <span>📍</span>
+                        <h3>Campus</h3>
+                        <p>Phagwara, Punjab, India</p>
+                    </div>
+
+                    <div>
+                        <span>🎓</span>
+                        <h3>Student Community</h3>
+                        <p>Learning beyond the classroom</p>
+                    </div>
+
+                    <div>
+                        <span>🤝</span>
+                        <h3>ClubConnect</h3>
+                        <p>Better teamwork and participation</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Members</span>
+                        <span class="stat-icon blue">♙</span>
+                    </div>
+                    <h2 id="totalMembers">0</h2>
+                    <p>Members in club</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Active Members</span>
+                        <span class="stat-icon green">●</span>
+                    </div>
+                    <h2 id="activeMembers">0</h2>
+                    <p>Currently active</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Pending Tasks</span>
+                        <span class="stat-icon orange">◷</span>
+                    </div>
+                    <h2 id="pendingTasks">0</h2>
+                    <p>Tasks to complete</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Completed Tasks</span>
+                        <span class="stat-icon purple">✓</span>
+                    </div>
+                    <h2 id="completedTasks">0</h2>
+                    <p>Tasks finished</p>
+                </div>
+
+            </div>
+
+
+            <!-- DASHBOARD CONTENT -->
+            <div class="dashboard-grid">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>Recent Tasks</h3>
+                            <p>Latest club activities</p>
+                        </div>
+
+                        <button class="text-button" onclick="goToPage('tasks')">
+                            View All →
+                        </button>
+                    </div>
+
+                    <div id="dashboardTasks"></div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>Club Members</h3>
+                            <p>Member overview</p>
+                        </div>
+
+                        <button class="text-button" onclick="goToPage('members')">
+                            Manage →
+                        </button>
+                    </div>
+
+                    <div id="dashboardMembers"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PURPOSE -->
+            <div class="purpose-card">
+                <div class="purpose-icon">💡</div>
+
+                <div>
+                    <h3>Why ClubConnect?</h3>
+
+                    <p>
+                        ClubConnect addresses inactive club members and
+                        overloaded club leads by making tasks visible,
+                        contributions manageable and new members easier
+                        to involve.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- MEMBERS PAGE -->
+        <section class="page" id="members">
+
+            <div class="page-intro">
+                <div>
+                    <h2>Member Management</h2>
+                    <p>Add members, update their details or remove them.</p>
+                </div>
+
+                <button class="primary-button" onclick="openMemberForm()">
+                    + Add Member
+                </button>
+            </div>
+
+            <div class="card">
+                <div id="memberList"></div>
+            </div>
+
+            <div class="card form-card" id="memberFormContainer">
+            </div>
+
+        </section>
+
+
+        <!-- TASKS PAGE -->
+        <section class="page" id="tasks">
+
+            <div class="page-intro">
+                <div>
+                    <h2>Task Management</h2>
+                    <p>Create tasks and distribute work among members.</p>
+                </div>
+
+                <button class="primary-button" onclick="openTaskForm()">
+                    + Add Task
+                </button>
+            </div>
+
+            <div class="card">
+                <div id="taskList"></div>
+            </div>
+
+            <div class="card form-card" id="taskFormContainer">
+            </div>
+
+        </section>
+
+
+        <!-- ONBOARDING PAGE -->
+        <section class="page" id="onboarding">
+
+            <div class="page-intro">
+                <div>
+                    <h2>New Member Onboarding</h2>
+                    <p>Start small. Participate comfortably. Grow together.</p>
+                </div>
+            </div>
+
+            <div class="onboarding-banner">
+                <h2>Every journey starts with one small task.</h2>
+                <p>
+                    New members can choose a simple activity
+                    to begin contributing to the club.
+                </p>
+            </div>
+
+            <div class="card">
+
+                <h3>Starter Task Ideas</h3>
+
+                <div class="starter-tasks">
+                    <div class="starter-item">
+                        <span>🎨</span>
+                        <p>Help prepare an event poster</p>
+                    </div>
+
+                    <div class="starter-item">
+                        <span>📢</span>
+                        <p>Share an event announcement</p>
+                    </div>
+
+                    <div class="starter-item">
+                        <span>🤝</span>
+                        <p>Welcome a new participant</p>
+                    </div>
+
+                    <div class="starter-item">
+                        <span>📋</span>
+                        <p>Assist with event checklist</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Join a Club Activity</h3>
+
+                <form id="joinForm" class="form">
+
+                    <label>
+                        Your Name
+                        <input type="text" name="name" required
+                        placeholder="Enter your name">
+                    </label>
+
+                    <label>
+                        Registration Number
+                        <input type="text" name="regno"
+                        placeholder="Enter registration number">
+                    </label>
+
+                    <label>
+                        Starter Task
+                        <select name="task" required>
+                            <option value="">Select a task</option>
+                            <option>Help prepare an event poster</option>
+                            <option>Share an event announcement</option>
+                            <option>Welcome a new participant</option>
+                            <option>Assist with event checklist</option>
+                        </select>
+                    </label>
+
+                    <button class="primary-button" type="submit">
+                        Submit Interest
+                    </button>
+
+                </form>
+
+                <div id="joinerList"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEEDBACK PAGE -->
+        <section class="page" id="feedback">
+
+            <div class="page-intro">
+                <div>
+                    <h2>Feedback & Workload</h2>
+                    <p>Share your experience and help improve club participation.</p>
+                </div>
+            </div>
+
+            <div class="card">
+
+                <h3>Member Check-in</h3>
+
+                <form id="feedbackForm" class="form">
+
+                    <label>
+                        Name (optional)
+                        <input type="text" name="name"
+                        placeholder="Your name">
+                    </label>
+
+                    <label>
+                        How manageable is your workload?
+                        <select name="workload" required>
+                            <option value="">Select your response</option>
+                            <option>Very manageable</option>
+                            <option>Manageable</option>
+                            <option>A little heavy</option>
+                            <option>Too much right now</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Suggestions or problems
+                        <textarea name="suggestion"
+                        placeholder="Tell us what can be improved..."></textarea>
+                    </label>
+
+                    <button class="primary-button" type="submit">
+                        Submit Feedback
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="card">
+                <h3>Feedback Summary</h3>
+                <div id="feedbackSummary"></div>
+            </div>
+
+        </section>
+
+
+        <footer class="footer">
+            <p>ClubConnect · Design Thinking Project · LPU</p>
+            <p>Made to improve participation, teamwork and student engagement.</p>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
